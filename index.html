@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CocoCrisp – Crunchy coconut chips. Baked, not fried.</title>
-<meta name="description" content="CocoCrisp coconut chips: thin slices of real coconut, baked not fried, in Indian flavours – Jaggery Elaichi, Masala and Chilli Lime. Order on WhatsApp.">
+<meta name="description" content="CocoCrisp coconut chips: thin slices of real coconut, baked not fried, in Indian flavours – Jaggery Elaichi, Masala and Chilli Lime. Order online.">
 <meta property="og:title" content="CocoCrisp – Crunchy. Coconutty. Not fried.">
-<meta property="og:description" content="Real coconut chips in Indian flavours. Small-batch, baked not fried. Order on WhatsApp.">
+<meta property="og:description" content="Real coconut chips in Indian flavours. Small-batch, baked not fried. Order online.">
 <meta name="theme-color" content="#3b2212">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,7 +75,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .flav .hindi{font-size:.85rem;opacity:.85;font-weight:500;margin-bottom:10px}
 .flav p{font-size:.95rem;opacity:.95;flex:1}
 .flav .tag{display:inline-block;background:rgba(255,255,255,.2);padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:600;margin-bottom:14px;align-self:flex-start}
-.flav a.mini{margin-top:16px;align-self:flex-start;background:#fff;color:var(--dark);padding:10px 18px;border-radius:999px;font-weight:600;font-size:.9rem;text-decoration:none}
+.flav a.mini-old{margin-top:16px;align-self:flex-start;background:#fff;color:var(--dark);padding:10px 18px;border-radius:999px;font-weight:600;font-size:.9rem;text-decoration:none}
 @media(max-width:860px){.flav-grid{grid-template-columns:1fr}.flav{min-height:0}}
 /* why */
 .why{background:var(--sand)}
@@ -99,20 +99,58 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .order .lead{color:#e9d3b3}
 .order-box{margin-top:30px;background:rgba(255,248,236,.06);border:1px solid rgba(255,248,236,.14);border-radius:28px;padding:26px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px}
 .order-box h3{font-size:1.3rem;margin-bottom:14px}
-.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px dashed rgba(255,248,236,.15)}
-.row:last-child{border-bottom:0}
-.row .nm{display:flex;align-items:center;gap:12px;font-weight:600}
-.dot{width:16px;height:16px;border-radius:50%;flex:none}
-.qty{display:flex;align-items:center;gap:6px;background:rgba(255,248,236,.1);border-radius:999px;padding:4px}
-.qty button{width:36px;height:36px;border-radius:50%;border:0;background:var(--cream);color:var(--dark);font-size:1.2rem;font-weight:700;cursor:pointer}
-.qty output{min-width:28px;text-align:center;font-weight:700}
-.side label{display:block;font-size:.85rem;color:#e9d3b3;margin:12px 0 6px}
-.side input,.side select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid rgba(255,248,236,.2);background:rgba(255,248,236,.08);color:var(--cream);font-family:inherit;font-size:1rem}
-.side select option{color:#000}
-.summary{margin:18px 0;font-size:.95rem;color:#f3dfc0;min-height:24px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.fgrid .full{grid-column:1/-1}
+.order label{display:block;font-size:.85rem;color:#e9d3b3;margin:12px 0 6px}
+.order input,.order select,.order textarea{width:100%;padding:13px 14px;border-radius:14px;border:1px solid rgba(255,248,236,.2);background:rgba(255,248,236,.08);color:var(--cream);font-family:inherit;font-size:1rem}
+.order textarea{min-height:84px;resize:vertical}
+.order select option{color:#000}
+.order input:invalid.touched,.order textarea:invalid.touched,.order select:invalid.touched{border-color:#ff8a70}
+.sumline{display:flex;justify-content:space-between;gap:10px;padding:8px 0;font-size:.95rem}
+.sumline.total{border-top:1px dashed rgba(255,248,236,.25);margin-top:8px;padding-top:14px;font-weight:700;font-size:1.1rem}
+.sumitems .sumline{color:#f3dfc0}
 .price-note{font-size:.82rem;color:#c9ad88;margin-top:12px}
-.side .btn{width:100%;justify-content:center}
-@media(max-width:860px){.order-box{grid-template-columns:1fr;padding:20px}}
+.paybtn{width:100%;justify-content:center;margin-top:18px;background:var(--lime);color:var(--dark)}
+.paybtn:disabled{background:rgba(255,248,236,.15);color:#c9ad88;cursor:not-allowed;box-shadow:none}
+.paymsg{font-size:.85rem;color:#e9d3b3;margin-top:10px;min-height:20px}
+.empty{color:#c9ad88;font-size:.95rem;padding:10px 0}
+@media(max-width:860px){.order-box{grid-template-columns:1fr;padding:20px}.fgrid{grid-template-columns:1fr}}
+/* cart */
+.carticon{position:relative;background:transparent;border:0;cursor:pointer;color:var(--cream);width:44px;height:44px;display:grid;place-items:center;border-radius:50%}
+.carticon:hover{background:rgba(255,248,236,.1)}
+.carticon svg{width:24px;height:24px}
+.ccount{position:absolute;top:2px;right:0;background:var(--lime);color:var(--dark);font-size:.72rem;font-weight:700;min-width:19px;height:19px;border-radius:999px;display:grid;place-items:center;padding:0 5px}
+.ccount[data-n="0"]{display:none}
+.overlay{position:fixed;inset:0;background:rgba(20,10,4,.55);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(400px,100%);background:var(--cream);z-index:90;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.25)}
+body.cart-open .overlay{opacity:1;pointer-events:auto}
+body.cart-open .drawer{transform:none}
+.dhead{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid #ecd6b2}
+.dhead h3{font-size:1.5rem}
+.xbtn{background:none;border:0;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--brown)}
+.dbody{flex:1;overflow:auto;padding:8px 22px}
+.citem{display:flex;gap:12px;align-items:center;padding:14px 0;border-bottom:1px dashed #e3c9a0}
+.citem .dot{width:40px;height:40px;border-radius:12px}
+.citem .info{flex:1}
+.citem .info b{display:block}
+.citem .info small{color:#8a6a50}
+.rm{background:none;border:0;color:#b0482f;font-size:.8rem;cursor:pointer;text-decoration:underline;padding:0;margin-top:2px;font-family:inherit}
+.qty{display:flex;align-items:center;gap:6px;background:#f3e3c7;border-radius:999px;padding:3px}
+.qty button{width:32px;height:32px;border-radius:50%;border:0;background:#fff;color:var(--dark);font-size:1.1rem;font-weight:700;cursor:pointer}
+.qty output{min-width:22px;text-align:center;font-weight:700}
+.dfoot{padding:18px 22px;border-top:1px solid #ecd6b2;background:var(--sand)}
+.dfoot .sumline{color:var(--dark)}
+.dfoot .btn{width:100%;justify-content:center;margin-top:12px;background:var(--dark);color:var(--cream)}
+.dot{width:16px;height:16px;border-radius:50%;flex:none}
+.price{display:flex;align-items:baseline;gap:8px;margin-top:14px}
+.price b{font-family:Fraunces,serif;font-size:1.6rem}
+.price small{opacity:.85;font-size:.8rem}
+.launch{font-size:.72rem;font-weight:600;background:rgba(0,0,0,.2);padding:3px 10px;border-radius:999px;margin-left:auto}
+.flav button.mini{margin-top:14px;align-self:stretch;background:#fff;color:var(--dark);padding:12px 18px;border-radius:999px;font-weight:600;font-size:.95rem;border:0;cursor:pointer;font-family:inherit;transition:transform .15s}
+.flav button.mini:active{transform:scale(.97)}
+.toast{position:fixed;left:50%;bottom:110px;visibility:hidden;transform:translate(-50%,200px);background:var(--dark);color:var(--cream);padding:12px 20px;border-radius:999px;z-index:100;font-weight:500;font-size:.92rem;transition:transform .3s;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.toast.show{transform:translate(-50%,0);visibility:visible}
+.wa-link{display:inline-flex!important;align-items:center;gap:6px}
 /* bulk */
 .bulk-card{background:linear-gradient(135deg,var(--green),#1d6e47);color:#fff;border-radius:30px;padding:44px 34px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;position:relative;overflow:hidden}
 .bulk-card h2{color:#fff}
@@ -138,8 +176,6 @@ footer a:hover{color:var(--lime)}
 .copy{grid-column:1/-1;border-top:1px solid rgba(255,248,236,.1);padding-top:20px;font-size:.8rem;color:#a88a68}
 @media(max-width:760px){footer .wrap{grid-template-columns:1fr}}
 /* sticky mobile wa */
-.fab{position:fixed;right:16px;bottom:16px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--green);display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.3);color:#fff}
-.fab svg{width:30px;height:30px;fill:#fff}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
@@ -161,7 +197,8 @@ footer a:hover{color:var(--lime)}
       <b style="font-weight:900">Coco<span>Crisp</span></b></a>
     <div class="navlinks">
       <a href="#flavours">Flavours</a><a href="#why">Why us</a><a href="#how">How it's made</a><a href="#bulk">Bulk</a><a href="#faq">FAQ</a>
-      <a class="btn btn-wa" href="#order">Order</a>
+      <a class="btn btn-wa" href="#flavours">Shop</a>
+      <button class="carticon" id="cartbtn" type="button" aria-label="Open cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 2H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span class="ccount" id="ccount" data-n="0">0</span></button>
     </div>
   </div>
 </nav>
@@ -173,8 +210,8 @@ footer a:hover{color:var(--lime)}
       <h1>Crunchy.<br><em>Coconutty.</em><br><span class="stroke">Not fried.</span></h1>
       <p>Thin slices of real coconut, slow-baked till golden and tossed in proper Indian flavours. One bite and you'll get it.</p>
       <div class="ctas">
-        <a class="btn btn-wa" href="#order"><svg class="wa-ico"><use href="#wa"/></svg>Order on WhatsApp</a>
-        <a class="btn btn-ghost" href="#flavours">See flavours</a>
+        <a class="btn btn-wa" href="#flavours">Shop the flavours</a>
+        <a class="btn btn-ghost" href="#how">How it's made</a>
       </div>
       <div class="badges">
         <span class="badge">🥥 Real coconut</span><span class="badge">🔥 Baked, not fried</span><span class="badge">🇮🇳 Indian flavours</span><span class="badge">✅ FSSAI registered</span>
@@ -230,7 +267,8 @@ footer a:hover{color:var(--lime)}
         <h3>Jaggery Elaichi</h3>
         <div class="hindi">Gur + elaichi</div>
         <p>Golden coconut glazed with jaggery and a warm hit of cardamom. Tastes like a festive mithai you can snack on any day.</p>
-        <a class="mini" href="#order" data-pick="Jaggery Elaichi">Order this →</a>
+        <div class="price"><b data-price>₹49</b><small data-pack>50 g pack</small><span class="launch">Launch price</span></div>
+        <button class="mini" type="button" data-add="Jaggery Elaichi">Add to cart</button>
       </article>
       <article class="flav mas reveal">
         <svg class="pack" viewBox="0 0 120 150" aria-hidden="true"><path d="M14 10h92l-4 10 4 10v110H14V30l4-10z" fill="#fff8ec"/><rect x="14" y="44" width="92" height="56" fill="#8f2414"/><text x="60" y="70" text-anchor="middle" font-family="Fraunces,serif" font-weight="900" font-size="15" fill="#fff8ec">CocoCrisp</text><text x="60" y="88" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#ffb59f">MASALA</text><use href="#toastchip" x="30" y="108" width="60" height="24"/></svg>
@@ -238,7 +276,8 @@ footer a:hover{color:var(--lime)}
         <h3>Masala</h3>
         <div class="hindi">Chilli · amchur · kala namak · chaat masala</div>
         <p>A little sweet, a lot chatpata. Red chilli, tangy amchur, black salt and chaat masala on a crunchy coconut base.</p>
-        <a class="mini" href="#order" data-pick="Masala">Order this →</a>
+        <div class="price"><b data-price>₹49</b><small data-pack>50 g pack</small><span class="launch">Launch price</span></div>
+        <button class="mini" type="button" data-add="Masala">Add to cart</button>
       </article>
       <article class="flav chl reveal">
         <svg class="pack" viewBox="0 0 120 150" aria-hidden="true"><path d="M14 10h92l-4 10 4 10v110H14V30l4-10z" fill="#fff8ec"/><rect x="14" y="44" width="92" height="56" fill="#2d7a3d"/><text x="60" y="70" text-anchor="middle" font-family="Fraunces,serif" font-weight="900" font-size="15" fill="#fff8ec">CocoCrisp</text><text x="60" y="88" text-anchor="middle" font-family="Poppins,sans-serif" font-size="9" fill="#d9f08a">CHILLI LIME</text><use href="#toastchip" x="30" y="108" width="60" height="24"/></svg>
@@ -246,7 +285,8 @@ footer a:hover{color:var(--lime)}
         <h3>Chilli Lime</h3>
         <div class="hindi">Mirchi + nimbu</div>
         <p>Bright lime and a chilli kick that keeps you reaching back into the pack. Made for chai time and movie nights.</p>
-        <a class="mini" href="#order" data-pick="Chilli Lime">Order this →</a>
+        <div class="price"><b data-price>₹49</b><small data-pack>50 g pack</small><span class="launch">Launch price</span></div>
+        <button class="mini" type="button" data-add="Chilli Lime">Add to cart</button>
       </article>
     </div>
   </div>
@@ -279,27 +319,35 @@ footer a:hover{color:var(--lime)}
   </div>
 </section>
 
-<section class="order" id="order">
+<section class="order" id="checkout">
   <div class="wrap">
-    <span class="eyebrow" style="color:var(--lime)">Order now</span>
-    <h2>Build your order.</h2>
-    <p class="lead">Choose your flavours and how many packs you want. We'll take it from there on WhatsApp.</p>
-    <div class="order-box">
+    <span class="eyebrow" style="color:var(--lime)">Checkout</span>
+    <h2>Almost yours.</h2>
+    <p class="lead">Fill in your delivery details, check your order and pay securely online.</p>
+    <form class="order-box" id="cofrm" novalidate>
       <div>
-        <h3>Flavours <span style="font-weight:400;font-size:.85rem;color:#c9ad88">(packs)</span></h3>
-        <div class="row" data-f="Jaggery Elaichi"><div class="nm"><span class="dot" style="background:var(--gur)"></span>Jaggery Elaichi</div><div class="qty"><button type="button" aria-label="Less Jaggery Elaichi">−</button><output>0</output><button type="button" aria-label="More Jaggery Elaichi">+</button></div></div>
-        <div class="row" data-f="Masala"><div class="nm"><span class="dot" style="background:var(--masala)"></span>Masala</div><div class="qty"><button type="button" aria-label="Less Masala">−</button><output>0</output><button type="button" aria-label="More Masala">+</button></div></div>
-        <div class="row" data-f="Chilli Lime"><div class="nm"><span class="dot" style="background:var(--chilli)"></span>Chilli Lime</div><div class="qty"><button type="button" aria-label="Less Chilli Lime">−</button><output>0</output><button type="button" aria-label="More Chilli Lime">+</button></div></div>
-        <p class="price-note">Small packs (about 40–50 g each), starting at ₹49. Launch prices coming soon, and we'll confirm the total and delivery on WhatsApp.</p>
+        <h3>Delivery details</h3>
+        <div class="fgrid">
+          <div><label for="c_name">Full name</label><input id="c_name" name="name" required autocomplete="name"></div>
+          <div><label for="c_phone">Mobile number</label><input id="c_phone" name="phone" type="tel" inputmode="numeric" required pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10-digit mobile" autocomplete="tel-national"></div>
+          <div class="full"><label for="c_email">Email</label><input id="c_email" name="email" type="email" required autocomplete="email"></div>
+          <div class="full"><label for="c_addr">Full address</label><textarea id="c_addr" name="address" required placeholder="Flat / building, street, area, landmark" autocomplete="street-address"></textarea></div>
+          <div><label for="c_city">City</label><input id="c_city" name="city" required autocomplete="address-level2"></div>
+          <div><label for="c_state">State</label><select id="c_state" name="state" required autocomplete="address-level1"><option value="">Select state</option></select></div>
+          <div><label for="c_pin">PIN code</label><input id="c_pin" name="pin" inputmode="numeric" required pattern="[1-9][0-9]{5}" maxlength="6" autocomplete="postal-code"></div>
+        </div>
       </div>
-      <div class="side">
-        <h3>Your details</h3>
-        <label for="nm">Name</label><input id="nm" type="text" placeholder="Your name" autocomplete="name">
-        <label for="ct">City / area</label><input id="ct" type="text" placeholder="e.g. Borivali, Mumbai" autocomplete="address-level2">
-        <div class="summary" id="sum">Add at least one pack to start.</div>
-        <a class="btn btn-wa" id="send" href="#" target="_blank" rel="noopener"><svg class="wa-ico"><use href="#wa"/></svg>Send order on WhatsApp</a>
+      <div>
+        <h3>Order summary</h3>
+        <div class="sumitems" id="co_items"></div>
+        <div class="sumline"><span>Subtotal</span><span id="co_sub">₹0</span></div>
+        <div class="sumline"><span>Shipping</span><span id="co_ship">Calculated at checkout</span></div>
+        <div class="sumline total"><span>Total</span><span id="co_total">₹0</span></div>
+        <button class="btn paybtn" id="paybtn" type="submit" disabled>Online payment launching soon</button>
+        <div class="paymsg" id="paymsg"></div>
+        <p class="price-note">Prices are launch prices and include all taxes where applicable. Payments are handled securely by Razorpay; we never see or store your card details.</p>
       </div>
-    </div>
+    </form>
   </div>
 </section>
 
@@ -323,9 +371,9 @@ footer a:hover{color:var(--lime)}
     <h2>Good questions.</h2>
     <details><summary>Are CocoCrisp chips fried?</summary><p>No. They're dried and toasted in an oven, never deep fried.</p></details>
     <details><summary>What are they made of?</summary><p>Thin slices of real mature coconut, plus the flavouring for each variety: jaggery and cardamom, sugar syrup with spices, or chilli and lime. Full ingredient lists will be printed on every pack.</p></details>
-    <details><summary>How do I order?</summary><p>Pick your flavours and quantities in the order section above and tap "Send order on WhatsApp". We'll reply to confirm the price, payment and delivery.</p></details>
-    <details><summary>How much does a pack cost?</summary><p>Small packs (about 40–50 g) start at ₹49. Final launch prices are coming soon, and we'll always confirm the exact total on WhatsApp before you pay.</p></details>
-    <details><summary>Where do you deliver?</summary><p>We're starting in Mumbai. Message us on WhatsApp with your city and we'll tell you if we can deliver to you.</p></details>
+    <details><summary>How do I order?</summary><p>Tap "Add to cart" on any flavour, open the cart, then go to checkout and fill in your delivery details. Online payment is launching soon.</p></details>
+    <details><summary>How much does a pack cost?</summary><p>Each 50 g pack is ₹49 at our launch price. You'll see the full total, including any shipping, at checkout before you pay.</p></details>
+    <details><summary>Where do you deliver?</summary><p>We're starting in Mumbai. Not sure if we reach you? Contact us on WhatsApp from the link at the bottom of the page.</p></details>
     <details><summary>How should I store them?</summary><p>Keep the pouch sealed in a cool, dry place. Once opened, close it tightly or move the chips into an airtight box so they stay crunchy.</p></details>
     <details><summary>Are you FSSAI registered?</summary><p>Yes, CocoCrisp is FSSAI registered.</p></details>
     <details><summary>Do you do bulk or custom orders?</summary><p>Yes. For retail stock, cafés, gifting or events, tap "Bulk enquiry on WhatsApp" and tell us what you need.</p></details>
@@ -338,47 +386,24 @@ footer a:hover{color:var(--lime)}
       <a class="logo" href="#top" style="display:inline-flex"><b style="font-weight:900">Coco<span>Crisp</span></b></a>
       <p style="margin-top:10px;max-width:320px">Crunchy coconut chips in Indian flavours. Baked, not fried. Made in small batches in Mumbai.</p>
     </div>
-    <div><h4>Explore</h4><a href="#flavours">Flavours</a><a href="#how">How it's made</a><a href="#order">Order</a><a href="#faq">FAQ</a></div>
-    <div><h4>Contact</h4><a id="footwa" href="#" target="_blank" rel="noopener">WhatsApp: +91 97697 00512</a><a href="#bulk">Bulk & retail enquiries</a><span style="display:block;margin-top:4px">FSSAI registered</span></div>
+    <div><h4>Explore</h4><a href="#flavours">Flavours</a><a href="#how">How it's made</a><a href="#checkout">Checkout</a><a href="#faq">FAQ</a></div>
+    <div><h4>Contact</h4><a id="footwa" class="wa-link" href="#" target="_blank" rel="noopener"><svg class="wa-ico" style="width:16px;height:16px"><use href="#wa"/></svg>Contact us on WhatsApp</a><a href="#bulk">Bulk & retail enquiries</a><span style="display:block;margin-top:4px">FSSAI registered</span></div>
     <div class="copy">© <span id="yr">2026</span> CocoCrisp. All rights reserved.</div>
   </div>
 </footer>
 
-<a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Chat with CocoCrisp on WhatsApp"><svg><use href="#wa"/></svg></a>
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Your cart" aria-hidden="true">
+  <div class="dhead"><h3>Your cart</h3><button class="xbtn" id="cartclose" type="button" aria-label="Close cart">&times;</button></div>
+  <div class="dbody" id="citems"></div>
+  <div class="dfoot">
+    <div class="sumline"><span>Subtotal</span><b id="d_sub">₹0</b></div>
+    <div class="sumline"><span>Shipping</span><span id="d_ship">Calculated at checkout</span></div>
+    <a class="btn" id="tocheckout" href="#checkout">Go to checkout</a>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
-(function(){
-  var PHONE='919769700512';
-  function wa(t){return 'https://wa.me/'+PHONE+'?text='+encodeURIComponent(t);}
-  document.getElementById('yr').textContent=new Date().getFullYear();
-  var hello=wa("Hi, I'd like to know more about CocoCrisp coconut chips.");
-  document.getElementById('fab').href=hello;
-  document.getElementById('footwa').href=hello;
-  document.getElementById('bulkbtn').href=wa("Hi, I'm interested in a bulk order of CocoCrisp.\nBusiness name: \nType (store / cafe / gifting / office): \nCity: \nApprox. quantity: ");
-  var rows=[].slice.call(document.querySelectorAll('.row[data-f]'));
-  var send=document.getElementById('send'),sum=document.getElementById('sum');
-  function q(r){return parseInt(r.querySelector('output').textContent,10)||0;}
-  function set(r,v){r.querySelector('output').textContent=Math.max(0,Math.min(99,v));update();}
-  function update(){
-    var items=rows.filter(function(r){return q(r)>0;}).map(function(r){return r.dataset.f+' x '+q(r);});
-    var total=rows.reduce(function(a,r){return a+q(r);},0);
-    var name=document.getElementById('nm').value.trim(),city=document.getElementById('ct').value.trim();
-    if(!items.length){sum.textContent='Add at least one pack to start.';send.href=wa("Hi, I'd like to order CocoCrisp. Which flavours are available?");return;}
-    sum.textContent=total+(total>1?' packs: ':' pack: ')+items.join(', ');
-    var t="Hi, I'd like to order CocoCrisp:\n- "+items.join('\n- ');
-    if(name)t+='\nName: '+name;
-    if(city)t+='\nCity/area: '+city;
-    send.href=wa(t);
-  }
-  rows.forEach(function(r){var b=r.querySelectorAll('button');b[0].onclick=function(){set(r,q(r)-1);};b[1].onclick=function(){set(r,q(r)+1);};});
-  ['nm','ct'].forEach(function(id){document.getElementById(id).addEventListener('input',update);});
-  [].forEach.call(document.querySelectorAll('[data-pick]'),function(a){a.addEventListener('click',function(){
-    var r=rows.filter(function(x){return x.dataset.f===a.dataset.pick;})[0];if(r&&q(r)===0)set(r,1);});});
-  update();
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
-    [].forEach.call(document.querySelectorAll('.reveal'),function(el){io.observe(el);});}
-  else{[].forEach.call(document.querySelectorAll('.reveal'),function(el){el.classList.add('in');});}
-})();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
