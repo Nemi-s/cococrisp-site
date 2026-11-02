@@ -53,3 +53,15 @@ server says the signature is verified. Test first with `rzp_test_...` keys.
 ## Custom domain
 Not connected yet. After the BigRock DNS points to GitHub Pages, add a `CNAME` file containing `cococrisp.in`
 and set the custom domain + "Enforce HTTPS" in repo Settings → Pages.
+
+## Brand kit (`brand/`)
+- `logo.svg` / `logo-light.svg` – horizontal logo (mark + "CocoCrisp" wordmark), outlined paths, for light / dark backgrounds.
+  PNG exports: `logo-dark-on-light.png`, `logo-light-on-dark.png` (transparent), `logo-mark.png`.
+- `logo-instagram-dark.png`, `logo-instagram-light.png` – 1080×1080 square profile/post versions (SVG sources alongside).
+- `wordmark*.svg` – wordmark only.
+- Palette: espresso `#2B1E17`, ivory `#F6F0E5`, muted gold `#B08D57`; flavour accents Jaggery Elaichi `#7B4F2A`, Masala `#86372A`, Chilli Lime `#4C5B3C`.
+- Type: Cormorant Garamond (display, wordmark) + Jost (labels/body). Both are SIL Open Font License.
+- `packaging/<flavour>-front.svg` / `-front-print.pdf` – flat front panel per flavour, 130 × 200 mm trim with 3 mm bleed (136 × 206 mm), all text outlined.
+  Before printing: confirm pouch size with the converter, add back-panel mandatory info (ingredients, nutrition, FSSAI logo + licence no., MRP, batch/dates, manufacturer address) and get the printer's dieline.
+- `mockups/` – AI-generated photoreal pouch mockups and hero shot (concept visuals, not photos of a production run).
+- Web images are WebP in `img/`.

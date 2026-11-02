@@ -20,9 +20,9 @@ var CONFIG = {
 };
 
 var FLAVOURS = {
-  'Jaggery Elaichi': { color: '#c46a1a' },
-  'Masala':          { color: '#d8442b' },
-  'Chilli Lime':     { color: '#7fb833' }
+  'Jaggery Elaichi': { color: '#7B4F2A', img: 'img/jaggery-elaichi-thumb.webp' },
+  'Masala':          { color: '#86372A', img: 'img/masala-thumb.webp' },
+  'Chilli Lime':     { color: '#4C5B3C', img: 'img/chilli-lime-thumb.webp' }
 };
 
 var STATES = ['Andaman and Nicobar Islands','Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chandigarh','Chhattisgarh','Dadra and Nagar Haveli and Daman and Diu','Delhi','Goa','Gujarat','Haryana','Himachal Pradesh','Jammu and Kashmir','Jharkhand','Karnataka','Kerala','Ladakh','Lakshadweep','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Puducherry','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttar Pradesh','Uttarakhand','West Bengal'];
@@ -60,10 +60,10 @@ var STATES = ['Andaman and Nicobar Islands','Andhra Pradesh','Arunachal Pradesh'
     var keys = Object.keys(cart);
     // drawer
     var box = $('citems'); box.innerHTML = '';
-    if (!keys.length) box.innerHTML = '<p class="empty">Your cart is empty. Add a flavour to get started.</p>';
+    if (!keys.length) box.innerHTML = '<p class="empty">Your cart is empty. Add a flavour to begin.</p>';
     keys.forEach(function (f) {
       var el = document.createElement('div'); el.className = 'citem';
-      el.innerHTML = '<span class="dot" style="background:' + FLAVOURS[f].color + '"></span>' +
+      el.innerHTML = '<img class="thumb" src="' + FLAVOURS[f].img + '" alt="" width="64" height="80" style="background:' + FLAVOURS[f].color + '">' +
         '<div class="info"><b></b><small>' + CONFIG.PACK_SIZE + ' · ' + money(CONFIG.PRICE_PER_PACK) + '</small><br><button type="button" class="rm">Remove</button></div>' +
         '<div class="qty"><button type="button" aria-label="Decrease">−</button><output>' + cart[f] + '</output><button type="button" aria-label="Increase">+</button></div>';
       el.querySelector('b').textContent = f;
@@ -78,7 +78,7 @@ var STATES = ['Andaman and Nicobar Islands','Andhra Pradesh','Arunachal Pradesh'
     $('tocheckout').style.display = keys.length ? '' : 'none';
     // checkout summary
     var it = $('co_items'); it.innerHTML = '';
-    if (!keys.length) it.innerHTML = '<p class="empty">Your cart is empty. <a href="#flavours" style="color:var(--lime)">Pick a flavour</a>.</p>';
+    if (!keys.length) it.innerHTML = '<p class="empty">Your cart is empty. <a href="#shop">Browse the collection</a>.</p>';
     keys.forEach(function (f) {
       var l = document.createElement('div'); l.className = 'sumline';
       var a = document.createElement('span'); a.textContent = f + ' × ' + cart[f];
@@ -107,11 +107,12 @@ var STATES = ['Andaman and Nicobar Islands','Andhra Pradesh','Arunachal Pradesh'
   $('tocheckout').onclick = closeCart;
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCart(); });
 
+  function openCartSoon() { if (window.matchMedia('(min-width: 900px)').matches) setTimeout(openCart, 250); }
   var toastT;
   function toast(msg) { var t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('show'); }, 1800); }
 
   [].forEach.call(document.querySelectorAll('[data-add]'), function (b) {
-    b.onclick = function () { var f = b.getAttribute('data-add'); setQty(f, (cart[f] || 0) + 1); toast(f + ' added to cart'); };
+    b.onclick = function () { var f = b.getAttribute('data-add'); setQty(f, (cart[f] || 0) + 1); toast(f + ' added to your cart'); openCartSoon(); };
   });
   [].forEach.call(document.querySelectorAll('[data-price]'), function (e) { e.textContent = money(CONFIG.PRICE_PER_PACK); });
   [].forEach.call(document.querySelectorAll('[data-pack]'), function (e) { e.textContent = CONFIG.PACK_SIZE; });
