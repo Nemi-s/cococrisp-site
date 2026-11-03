@@ -102,8 +102,8 @@ var STATES = ['Andaman and Nicobar Islands','Andhra Pradesh','Arunachal Pradesh'
   }
 
   /* ---------- drawer ---------- */
-  function openCart() { document.body.classList.add('cart-open'); $('drawer').setAttribute('aria-hidden', 'false'); }
-  function closeCart() { document.body.classList.remove('cart-open'); $('drawer').setAttribute('aria-hidden', 'true'); }
+  function openCart() { document.body.classList.add('cart-open'); var d = $('drawer'); d.setAttribute('aria-hidden', 'false'); d.inert = false; d.removeAttribute('inert'); }
+  function closeCart() { document.body.classList.remove('cart-open'); var d = $('drawer'); d.setAttribute('aria-hidden', 'true'); d.inert = true; d.setAttribute('inert', ''); }
   $('cartbtn').onclick = openCart; $('cartclose').onclick = closeCart; $('overlay').onclick = closeCart;
   $('tocheckout').onclick = closeCart;
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCart(); });
@@ -190,5 +190,15 @@ var STATES = ['Andaman and Nicobar Islands','Andhra Pradesh','Arunachal Pradesh'
   } else { [].forEach.call(document.querySelectorAll('.reveal'), function (el) { el.classList.add('in'); }); }
 
   render();
+
+  /* ---------- "Add to cart" links from the flavour pages: /?add=masala#shop ---------- */
+  try {
+    var addSlug = new URLSearchParams(location.search).get('add');
+    if (addSlug) {
+      var addName = Object.keys(FLAVOURS).filter(function (n) { return n.toLowerCase().replace(/\s+/g, '-') === addSlug; })[0];
+      if (addName) { setQty(addName, (cart[addName] || 0) + 1); toast(addName + ' added to your cart'); setTimeout(openCart, 400); }
+      if (history.replaceState) history.replaceState(null, '', location.pathname + (location.hash || '#shop'));
+    }
+  } catch (e) {}
   window.CocoCrisp = { cart: function () { return JSON.parse(JSON.stringify(cart)); }, setQty: setQty, total: total };
 })();

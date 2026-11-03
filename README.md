@@ -70,3 +70,13 @@ round clear window showing the real chips. Deliberately distinct from Sukoon (kr
   licence no., MRP, batch/dates, manufacturer address).
 - `mockups/` – AI-generated photoreal mockups and hero (concept visuals). `mockups/v1-dark/` keeps the earlier dark-pouch round.
 - Web images are WebP in `img/`.
+
+## SEO
+- `tools/build-seo.py` (+ `tools/seo_data.py`) generates the `<head>` meta/OG/Twitter tags and JSON-LD in
+  `index.html` (between `<!--seo:...-->` markers), the four flavour pages (`/classic-salted/`, `/masala/`,
+  `/chilli-lime/`, `/jaggery-elaichi/`), `sitemap.xml` and `robots.txt`. Run `python3 tools/build-seo.py` after
+  changing price, flavour copy or titles.
+- Product `Offer` has no `availability` while online payment is off. When Razorpay is live and stock is ready, set
+  `AVAILABILITY = 'https://schema.org/InStock'` in `tools/seo_data.py` and rebuild.
+- The FAQPage JSON-LD is generated from the visible FAQ on the home page.
+- Share images: `img/og/*.jpg` (1200x630). Icons: `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `icon-*.png`, `site.webmanifest`.
