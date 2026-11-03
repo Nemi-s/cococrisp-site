@@ -105,7 +105,7 @@ img{display:block;max-width:100%;height:auto}a{color:inherit}
 body>nav{border-bottom:1px solid var(--line)}body>nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 body>nav .links a{margin-left:26px;font-size:.78rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
 .crumbs{font-size:.86rem;color:var(--muted);padding:22px 0 0}.crumbs a{text-decoration:none}.crumbs a:hover{text-decoration:underline}
-.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;padding:28px 0 72px}
+.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:start;padding:28px 0 72px}
 .packbox{background:radial-gradient(120% 90% at 50% 30%,#fff 0%,#F4F3F0 62%,#ECEAE5 100%);border-radius:4px;aspect-ratio:4/5;display:flex;align-items:flex-end;justify-content:center;padding:0 0 9%}
 .packbox img{width:62%;filter:drop-shadow(0 24px 22px rgba(20,18,16,.16))}
 .eyebrow{font-size:.74rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
@@ -157,7 +157,7 @@ def build_flavour(f):
 {ld(graph)}
 </head>
 <body style="--acc:{f['accent']};--acc-t:{TEXT_ACC.get(f['accent'], f['accent'])}">
-<nav><div class="wrap"><a href="/" aria-label="CocoCrisp home"><img src="/brand/logo-mono.svg" alt="CocoCrisp" width="133" height="34"></a>
+<nav><div class="wrap"><a href="/" aria-label="CocoCrisp home"><img src="/brand/logo-mono.svg" alt="CocoCrisp" width="133" height="34" style="width:133px;height:34px"></a>
 <div class="links"><a href="/#story">Our coconut</a><a href="/#faq">FAQ</a><a class="shop" href="/#shop">Shop all flavours</a></div></div></nav>
 <main>
 <div class="wrap">
