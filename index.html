@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero-mobile.webp?v=6" media="(max-width: 899px)">
-<link rel="preload" as="image" href="img/hero-1280.webp?v=6" media="(min-width: 900px)">
+<link rel="preload" as="image" href="img/hero-mobile.webp?v=7" media="(max-width: 899px)">
+<link rel="preload" as="image" href="img/hero-1280.webp?v=7" media="(min-width: 900px)">
 <style>
 :root{--ivory:#FFFFFF;--paper:#F6F6F3;--sand:#F3F2EF;--line:#E7E5E0;--esp:#141210;--cocoa:#232120;--muted:#3A3835;--accent:#1F5FA8;--hero:#FAF9F7;--gold:#E0962A;--gold-d:#141210;--sage:#4E8F1F;--amber:#E0962A;--red:#D6392C;--lime:#86B52B;--blue:#1F5FA8;
 --serif:Jost,system-ui,sans-serif;--sans:Jost,system-ui,-apple-system,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
@@ -84,17 +84,28 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .prod figure{position:relative;background:radial-gradient(120% 90% at 50% 30%,#FFFFFF 0%,#F4F3F0 62%,#ECEAE5 100%);aspect-ratio:4/5;border-radius:4px;overflow:visible;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none;isolation:isolate}
 .prod figure:focus-visible{box-shadow:0 0 0 3px var(--accent)}
 .pk-floor{position:absolute;left:50%;bottom:8.5%;width:56%;height:5%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(20,18,16,.28),rgba(20,18,16,0));transition:transform .5s var(--ease),opacity .5s var(--ease);z-index:0}
-.pk-lift{position:absolute;left:50%;bottom:10%;width:60%;aspect-ratio:500/750;transform:translateX(-50%);transition:transform .55s cubic-bezier(.2,.8,.2,1.1);perspective:1100px;z-index:1;will-change:transform}
+.pk-lift{position:absolute;left:50%;bottom:10%;width:60%;aspect-ratio:500/750;transform:translateX(-50%);transition:transform .55s cubic-bezier(.2,.8,.2,1.1);z-index:1}
+.pk-zoom{position:absolute;left:0;top:0;width:100%;height:100%;perspective:1200px}
 .pk-spin{position:absolute;inset:0;transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
 .pk-face{position:absolute;inset:0;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .pk-back{transform:rotateY(180deg)}
-.pk-front img{position:absolute;inset:0;width:100%;height:100%;display:block;-webkit-user-drag:none;user-select:none}
-.pk-body{clip-path:inset(9.6% 0 0 0);-webkit-clip-path:inset(9.6% 0 0 0)}
-.pk-top{clip-path:inset(0 0 90.4% 0);-webkit-clip-path:inset(0 0 90.4% 0);transform-origin:3% 9.6%;filter:drop-shadow(0 2px 2px rgba(0,0,0,.12))}
-.pk-mouth{position:absolute;left:5%;right:5%;top:7.4%;height:4.6%;border-radius:50%;background:radial-gradient(closest-side,#2a1f16 0%,#4a382a 45%,#8a7560 75%,rgba(160,140,120,0) 100%);transform:scaleY(0);transform-origin:50% 50%}
+.pk-face img{position:absolute;inset:0;width:100%;height:100%;display:block;-webkit-user-drag:none;user-select:none}
+.pk-top{opacity:0;transform-origin:2% 9.6%;filter:drop-shadow(0 3px 2px rgba(0,0,0,.16))}
+.torn .pk-body{clip-path:var(--tear);-webkit-clip-path:var(--tear)}
+.torn .pk-top{opacity:1}
+.pk-foil{position:absolute;left:1.5%;right:1.5%;top:4%;height:9%;opacity:0}
+.pk-foil svg,.pk-edge svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pk-edge{position:absolute;inset:0;opacity:0;pointer-events:none}
+.pk-sheen,.pk-shade{position:absolute;inset:0;pointer-events:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.pk-sheen{background:linear-gradient(100deg,rgba(0,0,0,0) 34%,rgba(0,0,0,.05) 43%,rgba(255,255,255,.75) 50%,rgba(0,0,0,.04) 57%,rgba(0,0,0,0) 66%) 130% 0/300% 100% no-repeat;mix-blend-mode:normal}
+.pk-shade{background:#1a1612;opacity:0}
+.pk-label{position:absolute;left:6.5%;width:87%;top:14.6%}
+.pk-label svg{display:block;width:100%;height:auto}
 .pk-chips{position:absolute;inset:0;pointer-events:none;z-index:3}
-.pk-chip{position:absolute;left:0;top:0;width:19%;aspect-ratio:1/0.62;opacity:0;will-change:transform,opacity}
-.pk-chip svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 3px 3px rgba(60,40,20,.18))}
+.pk-chip{position:absolute;left:0;top:0;opacity:0;will-change:transform,opacity;transform-origin:50% 50%}
+.pk-chip img{display:block;width:100%;height:auto;filter:drop-shadow(0 1px 1px rgba(40,25,10,.28))}
+.pk-cshadow{position:absolute;left:0;top:0;opacity:0;border-radius:50%;background:radial-gradient(closest-side,rgba(30,20,10,.55),rgba(30,20,10,0));will-change:transform,opacity}
+.prod.fx-on{position:relative;z-index:30}
 .prod figure.lifted .pk-lift{transform:translateX(-50%) translateY(-7%) scale(1.09)}
 .prod figure.lifted .pk-floor{transform:translateX(-50%) scale(1.15,1.3);opacity:.7}
 .prod figure .tagl{z-index:4;transition:opacity .3s}
@@ -160,7 +171,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 /* bulk */
 .bulk{background:#F6F6F3;color:var(--esp);padding:0}
 .bulk-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
-.bulk-grid figure{min-height:340px;background:#fff url(img/hero-900.webp?v=6) 80% 50%/cover}
+.bulk-grid figure{min-height:340px;background:#fff url(img/hero-900.webp?v=7) 80% 50%/cover}
 .bulk-copy{padding:88px 64px}
 .bulk .eyebrow{color:var(--esp)}
 .bulk h2{color:var(--esp)}
@@ -244,8 +255,8 @@ body{color:var(--esp)}
 <header class="hero" id="top">
   <div class="hero-inner">
     <picture>
-      <source media="(min-width: 900px)" srcset="img/hero-1280.webp?v=6">
-      <img class="hero-img" src="img/hero-mobile.webp?v=6" alt="Four white CocoCrisp pouches with clear windows showing the chips: Classic Salted in front, with Masala, Chilli Lime and Jaggery Elaichi, beside a cracked coconut" width="896" height="512" fetchpriority="high">
+      <source media="(min-width: 900px)" srcset="img/hero-1280.webp?v=7">
+      <img class="hero-img" src="img/hero-mobile.webp?v=7" alt="Four white CocoCrisp pouches with clear windows showing the chips: Classic Salted in front, with Masala, Chilli Lime and Jaggery Elaichi, beside a cracked coconut" width="896" height="512" fetchpriority="high">
     </picture>
     <div class="hero-copy">
       <div>
@@ -271,13 +282,23 @@ body{color:var(--esp)}
         <figure class="pack" data-fx="classic-salted" tabindex="0" aria-label="CocoCrisp Classic Salted 50 g pouch. Hover or tap to open">
           <div class="pk-floor" aria-hidden="true"></div>
           <div class="pk-lift">
-            <div class="pk-spin">
-              <div class="pk-face pk-front">
-                <div class="pk-mouth" aria-hidden="true"></div>
-                <img class="pk-body" src="img/pack/classic-salted.webp" alt="CocoCrisp Classic Salted 50 g pouch" width="500" height="750" loading="lazy" decoding="async">
-                <img class="pk-top" src="img/pack/classic-salted.webp" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+            <div class="pk-zoom">
+              <div class="pk-spin">
+                <div class="pk-face pk-front">
+                  <div class="pk-foil" aria-hidden="true"></div>
+                  <img class="pk-body" src="img/pack/classic-salted.webp?v=7" alt="CocoCrisp Classic Salted 50 g pouch" width="500" height="750" loading="lazy" decoding="async">
+                  <img class="pk-top" src="img/pack/classic-salted.webp?v=7" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+                  <div class="pk-edge" aria-hidden="true"></div>
+                  <div class="pk-sheen" data-mask="img/pack/classic-salted.webp?v=7" aria-hidden="true"></div>
+                  <div class="pk-shade" data-mask="img/pack/classic-salted.webp?v=7" aria-hidden="true"></div>
+                </div>
+                <div class="pk-face pk-back">
+                  <img class="pk-bimg" src="img/pack/classic-salted-back-plain.webp?v=7" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+                  <div class="pk-label"></div>
+                  <div class="pk-sheen" data-mask="img/pack/classic-salted-back-plain.webp?v=7" aria-hidden="true"></div>
+                  <div class="pk-shade" data-mask="img/pack/classic-salted-back-plain.webp?v=7" aria-hidden="true"></div>
+                </div>
               </div>
-              <img class="pk-face pk-back" src="img/pack/classic-salted-back.webp" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="pk-chips" aria-hidden="true"></div>
@@ -296,13 +317,23 @@ body{color:var(--esp)}
         <figure class="pack" data-fx="masala" tabindex="0" aria-label="CocoCrisp Masala 50 g pouch. Hover or tap to open">
           <div class="pk-floor" aria-hidden="true"></div>
           <div class="pk-lift">
-            <div class="pk-spin">
-              <div class="pk-face pk-front">
-                <div class="pk-mouth" aria-hidden="true"></div>
-                <img class="pk-body" src="img/pack/masala.webp" alt="CocoCrisp Masala 50 g pouch" width="500" height="750" loading="lazy" decoding="async">
-                <img class="pk-top" src="img/pack/masala.webp" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+            <div class="pk-zoom">
+              <div class="pk-spin">
+                <div class="pk-face pk-front">
+                  <div class="pk-foil" aria-hidden="true"></div>
+                  <img class="pk-body" src="img/pack/masala.webp?v=7" alt="CocoCrisp Masala 50 g pouch" width="500" height="750" loading="lazy" decoding="async">
+                  <img class="pk-top" src="img/pack/masala.webp?v=7" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+                  <div class="pk-edge" aria-hidden="true"></div>
+                  <div class="pk-sheen" data-mask="img/pack/masala.webp?v=7" aria-hidden="true"></div>
+                  <div class="pk-shade" data-mask="img/pack/masala.webp?v=7" aria-hidden="true"></div>
+                </div>
+                <div class="pk-face pk-back">
+                  <img class="pk-bimg" src="img/pack/masala-back-plain.webp?v=7" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+                  <div class="pk-label"></div>
+                  <div class="pk-sheen" data-mask="img/pack/masala-back-plain.webp?v=7" aria-hidden="true"></div>
+                  <div class="pk-shade" data-mask="img/pack/masala-back-plain.webp?v=7" aria-hidden="true"></div>
+                </div>
               </div>
-              <img class="pk-face pk-back" src="img/pack/masala-back.webp" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="pk-chips" aria-hidden="true"></div>
@@ -321,13 +352,23 @@ body{color:var(--esp)}
         <figure class="pack" data-fx="chilli-lime" tabindex="0" aria-label="CocoCrisp Chilli Lime 50 g pouch. Hover or tap to open">
           <div class="pk-floor" aria-hidden="true"></div>
           <div class="pk-lift">
-            <div class="pk-spin">
-              <div class="pk-face pk-front">
-                <div class="pk-mouth" aria-hidden="true"></div>
-                <img class="pk-body" src="img/pack/chilli-lime.webp" alt="CocoCrisp Chilli Lime 50 g pouch" width="500" height="750" loading="lazy" decoding="async">
-                <img class="pk-top" src="img/pack/chilli-lime.webp" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+            <div class="pk-zoom">
+              <div class="pk-spin">
+                <div class="pk-face pk-front">
+                  <div class="pk-foil" aria-hidden="true"></div>
+                  <img class="pk-body" src="img/pack/chilli-lime.webp?v=7" alt="CocoCrisp Chilli Lime 50 g pouch" width="500" height="750" loading="lazy" decoding="async">
+                  <img class="pk-top" src="img/pack/chilli-lime.webp?v=7" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+                  <div class="pk-edge" aria-hidden="true"></div>
+                  <div class="pk-sheen" data-mask="img/pack/chilli-lime.webp?v=7" aria-hidden="true"></div>
+                  <div class="pk-shade" data-mask="img/pack/chilli-lime.webp?v=7" aria-hidden="true"></div>
+                </div>
+                <div class="pk-face pk-back">
+                  <img class="pk-bimg" src="img/pack/chilli-lime-back-plain.webp?v=7" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+                  <div class="pk-label"></div>
+                  <div class="pk-sheen" data-mask="img/pack/chilli-lime-back-plain.webp?v=7" aria-hidden="true"></div>
+                  <div class="pk-shade" data-mask="img/pack/chilli-lime-back-plain.webp?v=7" aria-hidden="true"></div>
+                </div>
               </div>
-              <img class="pk-face pk-back" src="img/pack/chilli-lime-back.webp" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="pk-chips" aria-hidden="true"></div>
@@ -346,13 +387,23 @@ body{color:var(--esp)}
         <figure class="pack" data-fx="jaggery-elaichi" tabindex="0" aria-label="CocoCrisp Jaggery Elaichi 50 g pouch. Hover or tap to open">
           <div class="pk-floor" aria-hidden="true"></div>
           <div class="pk-lift">
-            <div class="pk-spin">
-              <div class="pk-face pk-front">
-                <div class="pk-mouth" aria-hidden="true"></div>
-                <img class="pk-body" src="img/pack/jaggery-elaichi.webp" alt="CocoCrisp Jaggery Elaichi 50 g pouch" width="500" height="750" loading="lazy" decoding="async">
-                <img class="pk-top" src="img/pack/jaggery-elaichi.webp" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+            <div class="pk-zoom">
+              <div class="pk-spin">
+                <div class="pk-face pk-front">
+                  <div class="pk-foil" aria-hidden="true"></div>
+                  <img class="pk-body" src="img/pack/jaggery-elaichi.webp?v=7" alt="CocoCrisp Jaggery Elaichi 50 g pouch" width="500" height="750" loading="lazy" decoding="async">
+                  <img class="pk-top" src="img/pack/jaggery-elaichi.webp?v=7" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+                  <div class="pk-edge" aria-hidden="true"></div>
+                  <div class="pk-sheen" data-mask="img/pack/jaggery-elaichi.webp?v=7" aria-hidden="true"></div>
+                  <div class="pk-shade" data-mask="img/pack/jaggery-elaichi.webp?v=7" aria-hidden="true"></div>
+                </div>
+                <div class="pk-face pk-back">
+                  <img class="pk-bimg" src="img/pack/jaggery-elaichi-back-plain.webp?v=7" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
+                  <div class="pk-label"></div>
+                  <div class="pk-sheen" data-mask="img/pack/jaggery-elaichi-back-plain.webp?v=7" aria-hidden="true"></div>
+                  <div class="pk-shade" data-mask="img/pack/jaggery-elaichi-back-plain.webp?v=7" aria-hidden="true"></div>
+                </div>
               </div>
-              <img class="pk-face pk-back" src="img/pack/jaggery-elaichi-back.webp" alt="" aria-hidden="true" width="500" height="750" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="pk-chips" aria-hidden="true"></div>
@@ -480,8 +531,9 @@ body{color:var(--esp)}
   </div>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="app.js?v=6"></script>
-<script src="pack-fx.js?v=6" defer></script>
+<script src="app.js?v=7"></script>
+<script src="back-label.js?v=7" defer></script>
+<script src="pack-fx.js?v=7" defer></script>
 <script>(function(){var n=document.getElementById('nav');function f(){n.classList.toggle('scrolled',scrollY>10)}addEventListener('scroll',f,{passive:true});f();})();</script>
 </body>
 </html>
