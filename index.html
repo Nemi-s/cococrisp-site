@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero-mobile.webp" media="(max-width: 899px)">
-<link rel="preload" as="image" href="img/hero-1280.webp" media="(min-width: 900px)">
+<link rel="preload" as="image" href="img/hero-mobile.webp?v=4" media="(max-width: 899px)">
+<link rel="preload" as="image" href="img/hero-1280.webp?v=4" media="(min-width: 900px)">
 <style>
 :root{--ivory:#FFFFFF;--paper:#F6F6F3;--sand:#F3F2EF;--line:#E7E5E0;--esp:#141210;--cocoa:#2A2725;--muted:#6B6762;--hero:#FAF9F7;--gold:#E0962A;--gold-d:#141210;--sage:#4E8F1F;--amber:#E0962A;--red:#D6392C;--lime:#86B52B;--blue:#1F5FA8;
 --serif:Jost,system-ui,sans-serif;--sans:Jost,system-ui,-apple-system,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
@@ -145,7 +145,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 /* bulk */
 .bulk{background:#F6F6F3;color:var(--esp);padding:0}
 .bulk-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
-.bulk-grid figure{min-height:340px;background:#fff url(img/hero-900.webp) 80% 50%/cover}
+.bulk-grid figure{min-height:340px;background:#fff url(img/hero-900.webp?v=4) 80% 50%/cover}
 .bulk-copy{padding:88px 64px}
 .bulk .eyebrow{color:var(--esp)}
 .bulk h2{color:var(--esp)}
@@ -226,8 +226,8 @@ body.cart-open .toast{opacity:0}
 <header class="hero" id="top">
   <div class="hero-inner">
     <picture>
-      <source media="(min-width: 900px)" srcset="img/hero-1280.webp">
-      <img class="hero-img" src="img/hero-mobile.webp" alt="Four white CocoCrisp pouches with clear windows showing the chips: Classic Salted in front, with Masala, Chilli Lime and Jaggery Elaichi, beside a cracked coconut" width="896" height="512" fetchpriority="high">
+      <source media="(min-width: 900px)" srcset="img/hero-1280.webp?v=4">
+      <img class="hero-img" src="img/hero-mobile.webp?v=4" alt="Four white CocoCrisp pouches with clear windows showing the chips: Classic Salted in front, with Masala, Chilli Lime and Jaggery Elaichi, beside a cracked coconut" width="896" height="512" fetchpriority="high">
     </picture>
     <div class="hero-copy">
       <div>
@@ -406,7 +406,7 @@ body.cart-open .toast{opacity:0}
   </div>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="app.js"></script>
+<script src="app.js?v=4"></script>
 <script>(function(){var n=document.getElementById('nav');function f(){n.classList.toggle('scrolled',scrollY>10)}addEventListener('scroll',f,{passive:true});f();})();</script>
 </body>
 </html>
