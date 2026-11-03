@@ -20,6 +20,7 @@ var CONFIG = {
 };
 
 var FLAVOURS = {
+  'Classic Salted':  { color: '#1F5FA8', img: 'img/classic-salted-thumb.webp' },
   'Jaggery Elaichi': { color: '#E0962A', img: 'img/jaggery-elaichi-thumb.webp' },
   'Masala':          { color: '#D6392C', img: 'img/masala-thumb.webp' },
   'Chilli Lime':     { color: '#86B52B', img: 'img/chilli-lime-thumb.webp' }

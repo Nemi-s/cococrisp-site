@@ -60,7 +60,7 @@ round clear window showing the real chips. Deliberately distinct from Sukoon (kr
 - `logo-mono.svg` / `logo-mono-white.svg` – primary logo for white / dark backgrounds (crescent mark + "CocoCrisp" wordmark, outlined).
   `logo.svg` / `logo-light.svg` – gold-mark variant. PNGs: `logo-dark-on-light.png`, `logo-light-on-dark.png`, `logo-mark.png`,
   `logo-instagram-dark.png`, `logo-instagram-light.png` (1080×1080).
-- Palette: white `#FFFFFF`, ink `#141210`, light grey `#F6F6F3`; flavour accents Jaggery Elaichi amber `#E0962A`,
+- Palette: white `#FFFFFF`, ink `#141210`, light grey `#F6F6F3`; flavour accents Classic Salted blue `#1F5FA8`, Jaggery Elaichi amber `#E0962A`,
   Masala red `#D6392C`, Chilli Lime green `#86B52B`.
 - Type: Jost (all site + pack text, SIL OFL); Cormorant Garamond only inside the logo (outlined).
 - `packaging/<flavour>-front.svg` / `-front-print.pdf` – flat front panel per flavour, 130 × 200 mm trim + 3 mm bleed

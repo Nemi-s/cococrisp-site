@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CocoCrisp · Baked Coconut Chips</title>
-<meta name="description" content="CocoCrisp: thin slices of real coconut, slow-baked, never fried, in three Indian flavours: Jaggery Elaichi, Masala and Chilli Lime. Small-batch, made in Mumbai.">
+<meta name="description" content="CocoCrisp: thin slices of real coconut, slow-baked, never fried, in four flavours: Classic Salted, Masala, Chilli Lime and Jaggery Elaichi. Small-batch, made in Mumbai.">
 <meta property="og:title" content="CocoCrisp · Baked Coconut Chips">
 <meta property="og:description" content="Real coconut, slow-baked to a crisp. Jaggery Elaichi, Masala and Chilli Lime.">
 <meta property="og:image" content="https://cococrisp.in/img/og.jpg">
@@ -17,7 +17,7 @@
 <link rel="preload" as="image" href="img/hero-mobile.webp" media="(max-width: 899px)">
 <link rel="preload" as="image" href="img/hero-1280.webp" media="(min-width: 900px)">
 <style>
-:root{--ivory:#FFFFFF;--paper:#F6F6F3;--sand:#F3F2EF;--line:#E7E5E0;--esp:#141210;--cocoa:#2A2725;--muted:#6B6762;--hero:#FAF9F7;--gold:#E0962A;--gold-d:#141210;--sage:#4E8F1F;--amber:#E0962A;--red:#D6392C;--lime:#86B52B;
+:root{--ivory:#FFFFFF;--paper:#F6F6F3;--sand:#F3F2EF;--line:#E7E5E0;--esp:#141210;--cocoa:#2A2725;--muted:#6B6762;--hero:#FAF9F7;--gold:#E0962A;--gold-d:#141210;--sage:#4E8F1F;--amber:#E0962A;--red:#D6392C;--lime:#86B52B;--blue:#1F5FA8;
 --serif:Jost,system-ui,sans-serif;--sans:Jost,system-ui,-apple-system,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -27,7 +27,7 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.025em}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 section{padding:96px 0;scroll-margin-top:60px}
-.eyebrow{display:flex;align-items:center;gap:10px;font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--esp);margin-bottom:18px}.eyebrow::before{content:"";width:22px;height:3px;background:linear-gradient(90deg,var(--amber) 33%,var(--red) 33% 66%,var(--lime) 66%)}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--esp);margin-bottom:18px}.eyebrow::before{content:"";width:22px;height:3px;background:linear-gradient(90deg,var(--blue) 25%,var(--red) 25% 50%,var(--lime) 50% 75%,var(--amber) 75%);width:28px}
 h2{font-size:clamp(2.4rem,6.4vw,4rem)}
 h2 em,h1 em{font-style:normal;color:#ADA8A0}
 .lead{font-size:1.06rem;color:var(--muted);max-width:560px;font-weight:300}
@@ -59,7 +59,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .hero h1 em{font-style:normal;color:#ADA8A0}
 .hero p{margin:22px 0 32px;font-size:1.06rem;color:var(--muted);max-width:420px;font-weight:300}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:22px;align-items:center}
-.hero-img{width:100%;height:auto;aspect-ratio:858/511;object-fit:cover}
+.hero-img{width:100%;height:auto;aspect-ratio:896/512;object-fit:cover}
 @media(min-width:900px){
  .hero-inner{grid-template-columns:minmax(380px,5fr) 7fr;min-height:min(86vh,800px);align-items:stretch}
  .hero picture{grid-column:2;grid-row:1;position:relative;overflow:hidden}
@@ -78,7 +78,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .strip li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--esp)}.strip li:nth-child(3n+1)::before{background:var(--amber)}.strip li:nth-child(3n+2)::before{background:var(--red)}.strip li:nth-child(3n)::before{background:var(--lime)}
 /* shop */
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:56px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.grid3{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media(max-width:1180px){.grid3{grid-template-columns:repeat(2,1fr);gap:48px 28px}}
 .prod{display:flex;flex-direction:column}
 .prod figure{position:relative;overflow:hidden;background:#F5F5F3;aspect-ratio:4/5;border-radius:4px}
 .prod figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
@@ -86,7 +87,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .prod .tagl{position:absolute;top:16px;left:16px;background:#fff;font-weight:600;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;padding:7px 12px;color:var(--cocoa)}
 .prod .meta{padding:24px 2px 0;display:flex;flex-direction:column;flex:1}
 .prod .swatch{width:36px;height:4px;margin-bottom:16px;border-radius:2px}
-.prod h3{font-size:1.9rem}
+.prod h3{font-size:1.75rem}
 .prod .notes{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:8px 0 12px}
 .prod p{color:var(--muted);font-weight:300;font-size:.98rem;flex:1}
 .price{display:flex;align-items:baseline;gap:10px;margin:20px 0 18px;padding-top:18px;border-top:1px solid var(--line)}
@@ -226,13 +227,13 @@ body.cart-open .toast{opacity:0}
   <div class="hero-inner">
     <picture>
       <source media="(min-width: 900px)" srcset="img/hero-1280.webp">
-      <img class="hero-img" src="img/hero-mobile.webp" alt="Three white CocoCrisp pouches with clear windows showing the chips: Jaggery Elaichi, Masala and Chilli Lime, beside a cracked coconut" width="858" height="511" fetchpriority="high">
+      <img class="hero-img" src="img/hero-mobile.webp" alt="Four white CocoCrisp pouches with clear windows showing the chips: Classic Salted in front, with Masala, Chilli Lime and Jaggery Elaichi, beside a cracked coconut" width="896" height="512" fetchpriority="high">
     </picture>
     <div class="hero-copy">
       <div>
         <span class="eyebrow">Small-batch coconut chips · Mumbai</span>
         <h1>Real coconut.<br>Baked <em>crisp.</em><br>Never fried.</h1>
-        <p>Paper-thin slices of mature coconut, baked, never fried, and finished in three Indian flavours.</p>
+        <p>Paper-thin slices of mature coconut, baked, never fried, and finished simply salted or in bold Indian flavours.</p>
         <div class="ctas"><a class="btn btn-dark" href="#shop">Shop the collection</a><a class="link" href="#method">Our method</a></div>
       </div>
     </div>
@@ -244,19 +245,19 @@ body.cart-open .toast{opacity:0}
 <section id="shop">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div><span class="eyebrow">The collection</span><h2>Three flavours, <em>one coconut</em>.</h2></div>
+      <div><span class="eyebrow">The collection</span><h2>Four flavours, <em>one coconut</em>.</h2></div>
       <p class="lead">Each one starts the same way, with a thin slice of real coconut, and ends somewhere distinctly Indian.</p>
     </div>
     <div class="grid3">
       <article class="prod reveal">
-        <figure><img src="img/jaggery-elaichi.webp" alt="CocoCrisp Jaggery Elaichi 50 g pouch" width="691" height="864" loading="lazy"><span class="tagl">Sweet</span></figure>
+        <figure><img src="img/classic-salted.webp" alt="CocoCrisp Classic Salted 50 g pouch" width="691" height="864" loading="lazy"><span class="tagl">Savoury</span></figure>
         <div class="meta">
-          <span class="swatch" style="background:var(--amber)"></span>
-          <h3>Jaggery Elaichi</h3>
-          <span class="notes">Gur · Cardamom</span>
-          <p>Golden coconut glazed in jaggery with a warm note of green cardamom. Familiar, festive, quietly moreish.</p>
+          <span class="swatch" style="background:var(--blue)"></span>
+          <h3>Classic Salted</h3>
+          <span class="notes">Coconut · Salt</span>
+          <p>Just coconut and a pinch of salt. Clean, crunchy and quietly addictive, the one to start with.</p>
           <div class="price"><b data-price>₹49</b><small data-pack>50 g pack</small><span class="launch">Launch price</span></div>
-          <button class="btn btn-line mini" type="button" data-add="Jaggery Elaichi">Add to cart</button>
+          <button class="btn btn-line mini" type="button" data-add="Classic Salted">Add to cart</button>
         </div>
       </article>
       <article class="prod reveal">
@@ -279,6 +280,17 @@ body.cart-open .toast{opacity:0}
           <p>Bright lime and a clean chilli warmth over toasted coconut. Made for chai time, long drives and good company.</p>
           <div class="price"><b data-price>₹49</b><small data-pack>50 g pack</small><span class="launch">Launch price</span></div>
           <button class="btn btn-line mini" type="button" data-add="Chilli Lime">Add to cart</button>
+        </div>
+      </article>
+      <article class="prod reveal">
+        <figure><img src="img/jaggery-elaichi.webp" alt="CocoCrisp Jaggery Elaichi 50 g pouch" width="691" height="864" loading="lazy"><span class="tagl">Sweet</span></figure>
+        <div class="meta">
+          <span class="swatch" style="background:var(--amber)"></span>
+          <h3>Jaggery Elaichi</h3>
+          <span class="notes">Gur · Cardamom</span>
+          <p>Golden coconut glazed in jaggery with a warm note of green cardamom. Familiar, festive, quietly moreish.</p>
+          <div class="price"><b data-price>₹49</b><small data-pack>50 g pack</small><span class="launch">Launch price</span></div>
+          <button class="btn btn-line mini" type="button" data-add="Jaggery Elaichi">Add to cart</button>
         </div>
       </article>
     </div>
@@ -306,7 +318,7 @@ body.cart-open .toast{opacity:0}
     <div class="steps">
       <div class="step reveal"><span class="num">i.</span><h3>Pick &amp; peel</h3><p>Mature coconuts are opened and every trace of brown skin is pared away by hand.</p></div>
       <div class="step reveal"><span class="num">ii.</span><h3>Slice thin</h3><p>The white flesh is cut into long, paper-thin ribbons so each chip bakes light and even.</p></div>
-      <div class="step reveal"><span class="num">iii.</span><h3>Flavour</h3><p>Slices rest in jaggery, a light syrup or our spice blends to take on each flavour.</p></div>
+      <div class="step reveal"><span class="num">iii.</span><h3>Flavour</h3><p>Slices are seasoned with salt or our spice blends, or rest in jaggery, to take on each flavour.</p></div>
       <div class="step reveal"><span class="num">iv.</span><h3>Bake &amp; seal</h3><p>Slow-dried and toasted until golden, then sealed straight away to keep the crunch.</p></div>
     </div>
   </div>
@@ -360,10 +372,11 @@ body.cart-open .toast{opacity:0}
   <div class="wrap">
     <div class="reveal"><span class="eyebrow">FAQ</span><h2>Good <em>questions</em>.</h2></div>
     <details><summary>Are CocoCrisp chips fried?</summary><p>No. They're slow-dried and toasted in an oven, never deep fried.</p></details>
-    <details><summary>What are they made of?</summary><p>Thin slices of real mature coconut, plus the flavouring for each variety: jaggery and cardamom; a light syrup with chilli, amchur, black salt and chaat masala; or chilli and lime. The full ingredient list is printed on every pack.</p></details>
-    <details><summary>How do I order?</summary><p>Choose a flavour and tap "Add to cart", then open the cart and continue to checkout with your delivery details. Online payment is launching soon.</p></details>
+    <details><summary>What are they made of?</summary><p>Thin slices of real mature coconut, plus the seasoning for each variety: just salt for Classic Salted; chilli, amchur, black salt and chaat masala for Masala; chilli and lime for Chilli Lime; or jaggery and cardamom for Jaggery Elaichi. The full ingredient list is printed on every pack.</p></details>
+    <details><summary>How do I order?</summary><p>Choose any of our four flavours and tap "Add to cart", then open the cart and continue to checkout with your delivery details. Online payment is launching soon.</p></details>
     <details><summary>How much does a pack cost?</summary><p>Each 50 g pack is ₹49 at our launch price. You'll see the full total, including any shipping, before you pay.</p></details>
     <details><summary>Where do you deliver?</summary><p>We're starting in Mumbai. Not sure if we reach you? Contact us on WhatsApp from the link at the bottom of the page.</p></details>
+    <details><summary>Which flavour should I try first?</summary><p>If you like your chips namkeen, start with Classic Salted, then go bolder with Masala or Chilli Lime. Jaggery Elaichi is the one for a sweet tooth.</p></details>
     <details><summary>How should I store them?</summary><p>Keep the pouch sealed in a cool, dry place. Once opened, reseal it tightly so the chips stay crisp.</p></details>
     <details><summary>Are you FSSAI registered?</summary><p>Yes, CocoCrisp is FSSAI registered.</p></details>
     <details><summary>Do you do bulk or custom orders?</summary><p>Yes. For retail, cafés, gifting or events, use the wholesale enquiry above and tell us what you need.</p></details>
