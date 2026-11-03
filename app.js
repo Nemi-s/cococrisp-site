@@ -20,9 +20,9 @@ var CONFIG = {
 };
 
 var FLAVOURS = {
-  'Jaggery Elaichi': { color: '#7B4F2A', img: 'img/jaggery-elaichi-thumb.webp' },
-  'Masala':          { color: '#86372A', img: 'img/masala-thumb.webp' },
-  'Chilli Lime':     { color: '#4C5B3C', img: 'img/chilli-lime-thumb.webp' }
+  'Jaggery Elaichi': { color: '#E0962A', img: 'img/jaggery-elaichi-thumb.webp' },
+  'Masala':          { color: '#D6392C', img: 'img/masala-thumb.webp' },
+  'Chilli Lime':     { color: '#86B52B', img: 'img/chilli-lime-thumb.webp' }
 };
 
 var STATES = ['Andaman and Nicobar Islands','Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chandigarh','Chhattisgarh','Dadra and Nagar Haveli and Daman and Diu','Delhi','Goa','Gujarat','Haryana','Himachal Pradesh','Jammu and Kashmir','Jharkhand','Karnataka','Kerala','Ladakh','Lakshadweep','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Puducherry','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttar Pradesh','Uttarakhand','West Bengal'];

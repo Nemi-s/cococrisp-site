@@ -55,13 +55,18 @@ Not connected yet. After the BigRock DNS points to GitHub Pages, add a `CNAME` f
 and set the custom domain + "Enforce HTTPS" in repo Settings → Pages.
 
 ## Brand kit (`brand/`)
-- `logo.svg` / `logo-light.svg` – horizontal logo (mark + "CocoCrisp" wordmark), outlined paths, for light / dark backgrounds.
-  PNG exports: `logo-dark-on-light.png`, `logo-light-on-dark.png` (transparent), `logo-mark.png`.
-- `logo-instagram-dark.png`, `logo-instagram-light.png` – 1080×1080 square profile/post versions (SVG sources alongside).
-- `wordmark*.svg` – wordmark only.
-- Palette: espresso `#2B1E17`, ivory `#F6F0E5`, muted gold `#B08D57`; flavour accents Jaggery Elaichi `#7B4F2A`, Masala `#86372A`, Chilli Lime `#4C5B3C`.
-- Type: Cormorant Garamond (display, wordmark) + Jost (labels/body). Both are SIL Open Font License.
-- `packaging/<flavour>-front.svg` / `-front-print.pdf` – flat front panel per flavour, 130 × 200 mm trim with 3 mm bleed (136 × 206 mm), all text outlined.
-  Before printing: confirm pouch size with the converter, add back-panel mandatory info (ingredients, nutrition, FSSAI logo + licence no., MRP, batch/dates, manufacturer address) and get the printer's dieline.
-- `mockups/` – AI-generated photoreal pouch mockups and hero shot (concept visuals, not photos of a production run).
+Current direction (v2, Nov 2026): bright white matte packs, bold sans typography, one accent colour per flavour,
+round clear window showing the real chips. Deliberately distinct from Sukoon (kraft pouches, serif, earthy palette).
+- `logo-mono.svg` / `logo-mono-white.svg` – primary logo for white / dark backgrounds (crescent mark + "CocoCrisp" wordmark, outlined).
+  `logo.svg` / `logo-light.svg` – gold-mark variant. PNGs: `logo-dark-on-light.png`, `logo-light-on-dark.png`, `logo-mark.png`,
+  `logo-instagram-dark.png`, `logo-instagram-light.png` (1080×1080).
+- Palette: white `#FFFFFF`, ink `#141210`, light grey `#F6F6F3`; flavour accents Jaggery Elaichi amber `#E0962A`,
+  Masala red `#D6392C`, Chilli Lime green `#86B52B`.
+- Type: Jost (all site + pack text, SIL OFL); Cormorant Garamond only inside the logo (outlined).
+- `packaging/<flavour>-front.svg` / `-front-print.pdf` – flat front panel per flavour, 130 × 200 mm trim + 3 mm bleed
+  (136 × 206 mm), all text outlined. The circle is the CLEAR WINDOW (no ink / no white underlay); the chips drawn inside
+  are for visualisation only – ask the printer to set it up as a window on their dieline.
+  Before printing: confirm pouch size with the converter, add back-panel mandatory info (ingredients, nutrition, FSSAI logo +
+  licence no., MRP, batch/dates, manufacturer address).
+- `mockups/` – AI-generated photoreal mockups and hero (concept visuals). `mockups/v1-dark/` keeps the earlier dark-pouch round.
 - Web images are WebP in `img/`.
