@@ -6,7 +6,7 @@ import json, re, html, os, sys, datetime
 sys.path.insert(0, os.path.dirname(__file__))
 from seo_data import SITE, PRICE, PACK, WHATSAPP, AVAILABILITY, FLAVOURS
 
-VER = '8'
+VER = '9'
 TODAY = datetime.date.today().isoformat()
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 HOME_TITLE = 'Baked Coconut Chips in 4 Indian Flavours, ₹49 | CocoCrisp'
@@ -32,7 +32,7 @@ def product(f):
     if AVAILABILITY: offer["availability"] = AVAILABILITY
     return {"@type": "Product", "@id": url + "#product", "name": f"CocoCrisp {f['name']} Baked Coconut Chips {PACK}",
             "url": url, "sku": "CC-" + f['slug'].upper() + "-50G", "category": "Snacks > Chips > Coconut chips",
-            "image": [f"{SITE}/img/pack/{f['slug']}.webp", f"{SITE}/img/og/{f['slug']}.jpg"],
+            "image": [f"{SITE}/img/product/{f['slug']}-{r}.jpg" for r in ('1x1', '4x3', '16x9')],
             "description": re.sub('<[^>]+>', '', f['lead']) + " Baked, not fried.",
             "brand": {"@type": "Brand", "name": "CocoCrisp"},
             "size": PACK, "weight": {"@type": "QuantitativeValue", "value": 50, "unitCode": "GRM"},
@@ -64,6 +64,7 @@ def head_common(title, desc, url, image, image_alt, og_type='website'):
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="{FONT}" as="font" type="font/woff2" crossorigin>
@@ -74,8 +75,9 @@ def build_index():
     p = os.path.join(ROOT, 'index.html'); s = open(p, encoding='utf-8').read()
     head = head_common(HOME_TITLE, HOME_DESC, SITE + '/', SITE + '/img/og/home.jpg',
                        'CocoCrisp baked coconut chips: four white pouches, Classic Salted, Masala, Chilli Lime and Jaggery Elaichi')
-    head += (f'<link rel="preload" as="image" href="img/hero-mobile.avif?v={VER}" type="image/avif" media="(max-width: 899px)" fetchpriority="high">\n'
-             f'<link rel="preload" as="image" href="img/hero-1280.avif?v={VER}" type="image/avif" media="(min-width: 900px)" fetchpriority="high">\n')
+    hs = ', '.join(f'img/hero/hero-{w}.avif?v={VER} {w}w' for w in (800, 1200, 1600, 2200))
+    head += (f'<link rel="preload" as="image" type="image/avif" imagesrcset="{hs}" '
+             f'imagesizes="(min-width: 1560px) 900px, (min-width: 900px) 58vw, 100vw" fetchpriority="high">\n')
     s = re.sub(r'<!--seo:head-->.*?<!--/seo:head-->', lambda m: '<!--seo:head-->\n' + head + '<!--/seo:head-->', s, flags=re.S)
     # FAQPage from the visible FAQ so the two never drift apart
     faq = []
@@ -87,7 +89,7 @@ def build_index():
         {"@type": "WebSite", "@id": SITE_ID, "name": "CocoCrisp", "url": SITE + "/", "inLanguage": "en-IN", "publisher": {"@id": ORG_ID}},
         {"@type": "WebPage", "@id": SITE + "/#webpage", "url": SITE + "/", "name": HOME_TITLE, "description": HOME_DESC,
          "isPartOf": {"@id": SITE_ID}, "about": {"@id": ORG_ID}, "inLanguage": "en-IN",
-         "primaryImageOfPage": {"@type": "ImageObject", "url": SITE + "/img/og/home.jpg", "width": 1200, "height": 630}},
+         "primaryImageOfPage": {"@type": "ImageObject", "url": SITE + "/img/hero/hero-2200.jpg", "width": 2200, "height": 1049}},
         {"@type": "ItemList", "name": "CocoCrisp baked coconut chips", "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "item": product(f)} for i, f in enumerate(FLAVOURS)]},
         {"@type": "FAQPage", "@id": SITE + "/#faq", "mainEntity": faq}]}
@@ -152,7 +154,7 @@ def build_flavour(f):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{head}<link rel="preload" as="image" href="/img/pack/{f['slug']}.webp?v={VER}" fetchpriority="high">
+{head}<link rel="preload" as="image" imagesrcset="/img/pack/{f['slug']}.webp?v={VER} 500w, /img/pack/{f['slug']}@2x.webp?v={VER} 1000w" imagesizes="(min-width: 861px) 340px, 50vw" fetchpriority="high">
 <style>{CSS}</style>
 {ld(graph)}
 </head>
@@ -163,7 +165,7 @@ def build_flavour(f):
 <div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/#shop">Coconut chips</a> › <span aria-current="page">{f['name']}</span></nav>
 <div class="hero">
-<div class="packbox"><img src="/img/pack/{f['slug']}.webp?v={VER}" alt="CocoCrisp {f['name']} baked coconut chips, 50 g white pouch" width="500" height="750" fetchpriority="high"></div>
+<div class="packbox"><img src="/img/pack/{f['slug']}.webp?v={VER}" srcset="/img/pack/{f['slug']}.webp?v={VER} 500w, /img/pack/{f['slug']}@2x.webp?v={VER} 1000w" sizes="(min-width: 861px) 340px, 50vw" alt="CocoCrisp {f['name']} baked coconut chips, 50 g white pouch" width="500" height="750" fetchpriority="high"></div>
 <div>
 <span class="eyebrow">Baked coconut chips · {esc(f['tag'])}</span>
 <h1>{f['h1']}</h1>
@@ -214,9 +216,14 @@ def build_flavour(f):
     print(f['slug'], len(f['title']), 'title chars,', len(f['desc']), 'desc chars')
 
 def build_sitemap():
-    urls = [(SITE + '/', '1.0')] + [(f"{SITE}/{f['slug']}/", '0.8') for f in FLAVOURS]
-    x = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    for u, pr in urls: x += f'  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>{pr}</priority></url>\n'
+    prod = lambda sl: [f"{SITE}/img/product/{sl}-{r}.jpg" for r in ('1x1', '4x3', '16x9')]
+    urls = [(SITE + '/', '1.0', [SITE + '/img/hero/hero-2200.jpg'] + [prod(f['slug'])[0] for f in FLAVOURS])] + \
+           [(f"{SITE}/{f['slug']}/", '0.8', prod(f['slug'])) for f in FLAVOURS]
+    x = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+         'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n')
+    for u, pr, imgs in urls:
+        x += f'  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>{pr}</priority>'
+        x += ''.join(f'<image:image><image:loc>{i}</image:loc></image:image>' for i in imgs) + '</url>\n'
     open(os.path.join(ROOT, 'sitemap.xml'), 'w').write(x + '</urlset>\n')
     open(os.path.join(ROOT, 'robots.txt'), 'w').write(
         'User-agent: *\nAllow: /\nDisallow: /*?add=\nDisallow: /shots/\nDisallow: /tools/\n\nSitemap: ' + SITE + '/sitemap.xml\n')
